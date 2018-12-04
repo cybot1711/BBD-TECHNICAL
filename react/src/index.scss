@@ -1,8 +1,10 @@
 @import "./node_modules/normalize.scss/normalize.scss";
 
 body {
-    background: red;
+    background: whitesmoke;
     flex: 1;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden; 
 }
 
 .container {

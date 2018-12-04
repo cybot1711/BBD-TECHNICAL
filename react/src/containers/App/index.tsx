@@ -1,4 +1,6 @@
 import * as React from "react";
+import { Banner } from "../../components/Banner";
+import { AccountList } from "../../components/AccountList";
 
 export interface AppProps {
     compiler: string;
@@ -8,6 +10,9 @@ export interface AppProps {
 
 export class App extends React.Component<AppProps, {}> {
     render() {
-        return <h1>Hello from {this.props.compiler} and {this.props.framework}!</h1>;
+        return <React.Fragment>
+            <Banner/>
+            <AccountList/>
+        </React.Fragment>;
     }
 }
