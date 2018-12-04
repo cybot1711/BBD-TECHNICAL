@@ -1,0 +1,62 @@
+[
+    {
+        "id": 0,
+        "account_number": "6331103626640816",
+        "account_type": "cheque",
+        "balance": "-296.65"
+    },
+    {
+        "id": 1,
+        "account_number": "5248117462997084",
+        "account_type": "savings",
+        "balance": "-20.00"
+    },
+    {
+        "id": 2,
+        "account_number": "3581474249964105",
+        "account_type": "savings",
+        "balance": "980.20"
+    },
+    {
+        "id": 3,
+        "account_number": "6709502417011422",
+        "account_type": "savings",
+        "balance": "905.81"
+    },
+    {
+        "id": 4,
+        "account_number": "5308160489139568",
+        "account_type": "cheque",
+        "balance": "-986.10"
+    },
+    {
+        "id": 5,
+        "account_number": "3559243852997209",
+        "account_type": "cheque",
+        "balance": "531.75"
+    },
+    {
+        "id": 6,
+        "account_number": "3585913435866604",
+        "account_type": "cheque",
+        "balance": "253.14"
+    },
+    {
+        "id": 7,
+        "account_number": "3564003756077737",
+        "account_type": "savings",
+        "balance": "896.79"
+    },
+    {
+        "id": 8,
+        "account_number": "3543910523783643",
+        "account_type": "cheque",
+        "balance": "-590.47"
+    },
+    {
+        "id": 9,
+        "account_number": "3532070362684767",
+        "account_type": "savings",
+        "balance": "58.00"
+    }
+]
