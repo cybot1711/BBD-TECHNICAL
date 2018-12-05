@@ -1,7 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 const webpack = require('webpack');
 const devMode = process.env.NODE_ENV !== 'production'
 
@@ -15,10 +14,11 @@ const htmlPlugin = new HtmlWebpackPlugin({
     }
 });
 
-const stylePlugin = new ExtractTextPlugin({filename: "styles.css"})
+const stylePlugin = new ExtractTextPlugin("styles.css");
+// const stylePlugin = new MiniCssExtractPlugin("styles.css")
 
 const config = {
-    entry: './src/index.tsx',
+    entry: './src/index.js',
 
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -26,16 +26,11 @@ const config = {
         publicPath: "/"
     },
 
-    devtool: "source-map",
-
-    resolve: {
-        extensions: [".ts", ".tsx", ".js", ".json", ".css", ".scss"]
-    },
     module: {
         rules: [
             {
-                test: /\.ts||\.tsx?$/,
-                use: 'ts-loader',
+                test: /\.js$/,
+                use: 'babel-loader',
                 exclude: [
                     /node_modules/,
                     /public/
@@ -47,11 +42,22 @@ const config = {
             },
 
             {
-                test: /\.scss$/,
-                use: stylePlugin.extract({
-					use: [ 'css-loader', 'postcss-loader', 'sass-loader' ]
-				})
-            },
+                test: /\.(sa|sc|c)ss$/,
+                use: stylePlugin.extract(
+                    {
+                        fallback: 'style-loader',
+                        use: [{
+                            loader: 'css-loader',
+                            options: {
+                                modules: false,
+                                sourceMap: true,
+                                minimize: true
+                            }
+                        },
+                            'postcss-loader',
+                            'sass-loader',]
+                    })
+            }
 
         ]
     },
@@ -62,7 +68,8 @@ const config = {
         historyApiFallback: true
 
     },
-    plugins: [htmlPlugin, stylePlugin]
+    plugins: [htmlPlugin, stylePlugin],
+
 }
 
 devMode === 'production' ?
