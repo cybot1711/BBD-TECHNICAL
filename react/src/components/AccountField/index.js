@@ -19,17 +19,30 @@ export class AccountField extends Component {
         return false;
     }
     formatAmount = amount => {
-        if (amount >= 0) {
-            return `ZAR ${Math.abs(amount).toFixed(2)}`
+        const absAmount = Math.abs(amount).toFixed(2);
+        if (amount > 0) {
+            return `ZAR ${absAmount}`
         }
-        return `-ZAR ${Math.abs(amount).toFixed(2)}`
+        return `-ZAR ${absAmount}`
     }
     render() {
         return <div className="account-field-wrapper">
             <div className="account-field">{this.props.accountNumber}</div>
             <div className="account-field">{this.props.accountType}</div>
             <div className="account-field">{this.formatAmount(this.props.accountBalance)}</div>
-            <div className="account-field"><Button lable={"withdraw"} enabled={this.isEnabled(this.props.accountBalance, this.props.accountType)}/></div>
+            <div className="account-field">
+                <Button
+                    onClick={(e) => {
+                        e.preventDefault()
+                        this.props.setId(this.props.id);
+                        this.props.setAmount(Number(this.props.accountBalance));
+                        this.props.setAccType(this.props.accountType);
+                        this.props.toggle()}
+                    }
+                    lable={"withdraw"}
+                    enabled={this.isEnabled(this.props.accountBalance, this.props.accountType)}
+                />
+            </div>
         </div>
     }
 }
