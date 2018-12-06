@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack');
 const devMode = process.env.NODE_ENV !== 'production'
 
@@ -15,7 +16,11 @@ const htmlPlugin = new HtmlWebpackPlugin({
 });
 
 const stylePlugin = new ExtractTextPlugin("styles.css");
-// const stylePlugin = new MiniCssExtractPlugin("styles.css")
+
+
+const copyPlugin = new CopyWebpackPlugin([
+    { from: 'public/favicon.ico', to: 'dist' },
+]);
 
 const config = {
     entry: './src/index.js',
@@ -68,7 +73,7 @@ const config = {
         historyApiFallback: true
 
     },
-    plugins: [htmlPlugin, stylePlugin],
+    plugins: [htmlPlugin, stylePlugin, copyPlugin],
 
 }
 

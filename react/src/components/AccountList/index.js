@@ -68,7 +68,6 @@ export class AccountList extends Component {
 
     render() {
         const { data } = this.state;
-        console.log('render')
         return <div className="account-list">
             <div className="title">
                 <h1>Account List</h1>
