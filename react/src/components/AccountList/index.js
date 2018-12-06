@@ -17,7 +17,7 @@ export class AccountList extends Component {
         canWithdraw: false,
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         this.fetchData()
     }
 
@@ -32,30 +32,28 @@ export class AccountList extends Component {
 
     setAmount = activeAmount => this.setState({ activeAmount })
 
-    fetchData = () => Services.getAccounts()
-        .then(data => this.setState(() => ({
-            data,
-        })));
+    fetchData = () =>
+        Services.getAccounts()
+            .then(data => this.setState({ data }), () => {
+                console.log(data);
+            });
 
-    updateAccount = amount => Services.patchAccount({ balance: amount }, this.state.activeId)
+
+    updateAccount = amount =>
+        Services.patchAccount({ balance: amount }, this.state.activeId)
+
 
     updateAmount = e => {
         this.setState({ amount: Number(e.target.value) });
         if (this.state.activeAccountType === 'savings' && this.state.activeAmount - e.target.value > 0) {
-            this.setState({ canWithdraw: true }, () => {
-                console.log(this.state);
-            });
+            this.setState({ canWithdraw: true });
             return;
         }
         if (this.state.activeAccountType === 'cheque' && this.state.activeAmount - e.target.value > -500) {
-            this.setState({ canWithdraw: true }, () => {
-                console.log(this.state);
-            });
+            this.setState({ canWithdraw: true });
             return;
         }
-        this.setState({ canWithdraw: false }, () => {
-            console.log(this.state);
-        });
+        this.setState({ canWithdraw: false });
         return;
     }
 
@@ -64,13 +62,16 @@ export class AccountList extends Component {
         .then(() => this.fetchData())
         .then(() => this.toggleModal())
         .then(() => alert('Success'))
+        
+        
+        
     }
- 
+
     computeTotal = data => data.reduce((accumulator, { balance }) => accumulator + Number(balance), 0).toFixed(2)
- 
+
     render() {
         const { data } = this.state;
-
+        console.log('render')
         return <div className="account-list">
             <div className="title">
                 <h1>Account List</h1>

@@ -29,7 +29,7 @@ app.disable('x-powered-by');
 // View engine setup
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'pug');
-
+app.set('etag', false); // disable 304
 // Capture body and parse to Query-string
 // Convert POST to GET
 // Redirect to JSON-SERVER for normal results

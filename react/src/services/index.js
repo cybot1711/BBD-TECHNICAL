@@ -9,7 +9,7 @@ export const getAccounts = async () => {
 
 export const patchAccount = async (data, id) => {
     try {
-       fetch(`http://localhost:8080/api/accounts/${id}`, {
+      await fetch(`http://localhost:8080/api/accounts/${id}`, {
             method: 'PATCH',
             body: JSON.stringify(data),
             headers: {
