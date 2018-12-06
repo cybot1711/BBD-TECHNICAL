@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./node_modules/normalize.scss/normalize.scss";
+
+body {
+    background:whitesmoke;
+    flex: 1;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}

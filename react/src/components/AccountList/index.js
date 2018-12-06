@@ -62,9 +62,6 @@ export class AccountList extends Component {
         .then(() => this.fetchData())
         .then(() => this.toggleModal())
         .then(() => alert('Success'))
-        
-        
-        
     }
 
     computeTotal = data => data.reduce((accumulator, { balance }) => accumulator + Number(balance), 0).toFixed(2)

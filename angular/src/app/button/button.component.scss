@@ -1,0 +1,20 @@
+.button {
+    outline: none;
+    background-color: green;
+    padding: 0.7em;
+    color: bisque;
+    font-weight: bold;
+    text-transform: capitalize;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+    &:hover {
+        transform: translateY(-3px);
+    }
+}
+
+.disabled {
+    cursor: not-allowed;
+    background: whitesmoke;
+    color: lightslategrey;
+    user-select: none;
+}
