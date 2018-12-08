@@ -64,7 +64,7 @@ export default class AccountField extends Component {
 AccountField.propTypes = {
   accountNumber: PropTypes.string,
   accountType: PropTypes.string,
-  accountBalance: PropTypes.string,
+  accountBalance: PropTypes.number,
   setAccType: PropTypes.func,
   setId: PropTypes.func,
   toggle: PropTypes.func,
